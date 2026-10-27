@@ -1,0 +1,142 @@
+erDiagram
+ USERS ||--o{ ADDRESSES : cadastra
+ USERS o|--o| CARTS : possui
+ CARTS ||--o{ CART_ITEMS : contem
+ PRODUCTS ||--o{ CART_ITEMS : selecionado
+ CATEGORIES ||--o{ PRODUCTS : classifica
+ USERS ||--o{ ORDERS : realiza
+ ORDERS ||--|{ ORDER_ITEMS : registra
+ PRODUCTS ||--o{ ORDER_ITEMS : referencia
+ ORDERS ||--|| PAYMENTS : tem
+ ORDERS ||--|{ ORDER_EVENTS : historico
+ USERS ||--o{ ORDER_EVENTS : autor
+ USERS {
+  int id PK
+  nvarchar name
+  nvarchar email UK
+  varchar password_hash
+  varchar role
+ }
+ ADDRESSES {
+  int id PK
+  int user_id FK
+  char cep
+  nvarchar street
+  nvarchar number
+  char state
+ }
+ CATEGORIES {
+  int id PK
+  nvarchar name UK
+  varchar slug UK
+  bit active
+ }
+ PRODUCTS {
+  int id PK
+  int category_id FK
+  nvarchar name
+  decimal price
+  decimal sale_price
+  int stock
+  nvarchar image
+  nvarchar sizes
+ }
+ CARTS {
+  int id PK
+  char token UK
+  int user_id FK
+ }
+ CART_ITEMS {
+  int id PK
+  int cart_id FK
+  int product_id FK
+  nvarchar size
+  int quantity
+ }
+ ORDERS {
+  int id PK
+  int user_id FK
+  varchar number UK
+  char checkout_key UK
+  decimal total
+  varchar status
+  nvarchar address_json
+ }
+ ORDER_ITEMS {
+  int id PK
+  int order_id FK
+  int product_id FK
+  nvarchar name
+  nvarchar size
+  int quantity
+  decimal unit_price
+ }
+ PAYMENTS {
+  int id PK
+  int order_id FK
+  varchar method
+  varchar status
+  bit simulated
+ }
+ ORDER_EVENTS {
+  int id PK
+  int order_id FK
+  int actor_id FK
+  varchar status
+ }
+ COUPONS {
+  int id PK
+  varchar code UK
+  int percent_off
+  decimal minimum
+  datetime expires_at
+ }
+ CONTACT_MESSAGES {
+  int id PK
+  nvarchar name
+  nvarchar email
+  nvarchar message
+ }
+ LOGIN_ATTEMPTS {
+  int id PK
+  char fingerprint
+  datetime occurred_at
+ }
+ PRODUCTS ||--|{ PRODUCT_VARIANTS : tamanhos
+ PRODUCTS ||--o{ PRODUCT_IMAGES : galeria
+ PRODUCT_VARIANTS ||--o{ STOCK_MOVEMENTS : movimentacao
+ PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : vendido
+ USERS o|--o{ STOCK_MOVEMENTS : responsavel
+ ORDERS o|--o{ STOCK_MOVEMENTS : gera
+ PRODUCT_VARIANTS {
+  int id PK
+  int product_id FK
+  nvarchar size
+  int stock
+  bit active
+ }
+ STOCK_MOVEMENTS {
+  int id PK
+  int product_id FK
+  int variant_id FK
+  int order_id FK
+  int actor_id FK
+  varchar movement_type
+  int delta
+  int stock_before
+  int stock_after
+  nvarchar note
+  datetime created_at
+ }
+ PRODUCT_IMAGES {
+  int id PK
+  int product_id FK
+  nvarchar path
+  int sort_order
+ }
+ STORE_SETTINGS {
+  int id PK
+  nvarchar notice
+  nvarchar support_email
+  int low_stock_threshold
+ }

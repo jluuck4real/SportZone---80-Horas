@@ -1,0 +1,46 @@
+sequenceDiagram
+ actor Cliente
+ participant UI as checkout.html / site.js
+ participant API as ApiController
+ participant S as Security
+ participant PS as PedidoService
+ participant CS as CarrinhoService
+ participant DB as SQL Server / PDO
+ Cliente->>UI: Informar entrega e revisar
+ UI->>API: POST cart/quote + CSRF
+ API->>S: Validar CSRF
+ API->>CS: summary(cupom, CEP, strict)
+ CS->>DB: SELECT produtos e cupom parametrizados
+ DB-->>CS: Dados atuais
+ CS-->>UI: Totais em centavos e frete simulado
+ Cliente->>UI: Selecionar pagamento e confirmar teste
+ UI->>API: POST checkout + CSRF + chave + total revisado
+ API->>S: Validar token e usuário
+ API->>PS: checkout(userId, data)
+ PS->>DB: BEGIN TRANSACTION
+ PS->>DB: Verificar checkout_key e bloquear produtos UPDLOCK/HOLDLOCK
+ alt Chave já registrada para o usuário
+  DB-->>PS: Pedido existente
+  PS->>DB: COMMIT sem baixar estoque novamente
+ else Nova confirmação
+  PS->>CS: Recalcular preços, disponibilidade, cupom e frete
+  CS->>DB: Ler dados atuais
+  CS-->>PS: Resumo recalculado
+  alt Validação ou escrita falha
+   PS->>DB: ROLLBACK
+   PS-->>API: Exceção tratada
+   API-->>UI: 422/503 com mensagem segura
+  else Válido
+   PS->>DB: INSERT orders
+   PS->>DB: Bloquear variação e validar saldo não negativo
+   PS->>DB: UPDATE product_variants e INSERT stock_movements
+   PS->>DB: Sincronizar products.stock e INSERT order_items
+   PS->>DB: INSERT payments pendente e order_events
+   PS->>DB: DELETE cart_items
+   PS->>DB: COMMIT
+   PS-->>API: ID do pedido
+   API-->>UI: 201 com ID
+   UI-->>Cliente: Confirmação aguardando pagamento
+  end
+ end
+ Note over Cliente,DB: Aprovação posterior exige ação explícita de simulação; não há gateway ou cobrança real.

@@ -1,0 +1,17 @@
+.env
+.env.*
+app/
+config/
+data/
+docs/
+sql/
+storage/
+tests/
+node_modules/
+public-vercel/
+*.zip
+*.php
+.htaccess
+admin.html
+scripts/*.php
+scripts/*.ps1

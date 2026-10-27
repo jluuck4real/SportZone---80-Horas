@@ -1,0 +1,30 @@
+{
+  "base": "https://sportzone-lac.vercel.app",
+  "at": "2026-10-27T03:04:54.287Z",
+  "results": [
+    {
+      "name": "Home pública, produtos e rodapé atualizado",
+      "passed": true
+    },
+    {
+      "name": "API HTTPS e cookie de sessão seguro",
+      "passed": true
+    },
+    {
+      "name": "Carrinho persiste na mesma sessão; preço calculado no servidor",
+      "passed": true
+    },
+    {
+      "name": "CSRF e autorização administrativa",
+      "passed": true
+    },
+    {
+      "name": "Arquivos privados não são publicados",
+      "passed": true
+    },
+    {
+      "name": "Home e catálogo no celular e desktop",
+      "passed": true
+    }
+  ]
+}

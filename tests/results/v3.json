@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-27T02:31:41.216Z",
+  "database": "SQLite isolado; SQL Server não executado",
+  "results": [
+    {
+      "name": "Página admin e todas as APIs de gestão negam acesso a cliente",
+      "passed": true
+    },
+    {
+      "name": "CSRF obrigatório em cadastro e ajuste administrativo",
+      "passed": true
+    },
+    {
+      "name": "Cadastrar produto com variantes, galeria e destaque reflete no catálogo",
+      "passed": true
+    },
+    {
+      "name": "Preço promocional e edição persistem após nova leitura",
+      "passed": true
+    },
+    {
+      "name": "Tamanho esgotado e quantidade acima da variação são bloqueados",
+      "passed": true
+    },
+    {
+      "name": "Ajustar estoque exige saldo atual, registra ator/motivo e impede negativo",
+      "passed": true
+    },
+    {
+      "name": "Não é permitido descartar tamanho com estoque durante edição",
+      "passed": true
+    },
+    {
+      "name": "Pedido baixa somente o tamanho comprado e registra saída",
+      "passed": true
+    },
+    {
+      "name": "Listagem de pedidos inclui cliente, itens e filtros persistidos no banco",
+      "passed": true
+    },
+    {
+      "name": "Pagamento e entrega separados: não é possível enviar antes da aprovação",
+      "passed": true
+    },
+    {
+      "name": "Separação e preparação são etapas obrigatórias, sem saltos",
+      "passed": true
+    },
+    {
+      "name": "Problema de entrega exige motivo e retorna somente à etapa anterior",
+      "passed": true
+    },
+    {
+      "name": "Pedido entregue não pode ser cancelado nem regredir",
+      "passed": true
+    },
+    {
+      "name": "Isolamento do pedido e histórico por usuário",
+      "passed": true
+    },
+    {
+      "name": "Cancelamento devolve a variação exatamente uma vez e registra autor",
+      "passed": true
+    },
+    {
+      "name": "Recusa de demonstração fica separada da logística e pode ser retomada",
+      "passed": true
+    },
+    {
+      "name": "Configuração salva aviso e limiar real, com validação",
+      "passed": true
+    },
+    {
+      "name": "Dashboard usa contagens reais e distingue total demonstrativo do financeiro",
+      "passed": true
+    },
+    {
+      "name": "Desativação bloqueia compra e preserva detalhe administrativo",
+      "passed": true
+    },
+    {
+      "name": "Paginação de todos os pedidos além de uma página",
+      "passed": true
+    },
+    {
+      "name": "SQL Injection, XSS e filtros de gestão continuam tratados como dados",
+      "passed": true
+    },
+    {
+      "name": "Migração repetida preserva pedidos, usuários, descrição editada e estoque",
+      "passed": true
+    },
+    {
+      "name": "Migração de banco legado preserva conta, pedido enviado e total de unidades",
+      "passed": true
+    },
+    {
+      "name": "Dois processos PHP disputam a última unidade sem duplicar pedido ou estoque",
+      "passed": true
+    },
+    {
+      "name": "Script CLI cria administrador com senha fornecida e não sobrescreve conta existente",
+      "passed": true
+    }
+  ]
+}

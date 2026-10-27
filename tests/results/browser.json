@@ -1,0 +1,108 @@
+{
+  "at": "2026-10-27T02:32:27.629Z",
+  "engine": "Microsoft Edge / Playwright",
+  "database": "SQLite isolado",
+  "results": [
+    {
+      "name": "Home desktop carrega API, imagens locais e identidade SportZone",
+      "passed": true
+    },
+    {
+      "name": "Catálogo: filtro por modalidade, nome e detalhe correto",
+      "passed": true
+    },
+    {
+      "name": "Selecionar tamanho, adicionar produto e carrinho real",
+      "passed": true
+    },
+    {
+      "name": "Cadastro e login pelo navegador preservam carrinho",
+      "passed": true
+    },
+    {
+      "name": "Checkout: entrega, revisão, pagamento e confirmação pendente",
+      "passed": true
+    },
+    {
+      "name": "Pagamento só muda após clicar em simular aprovação",
+      "passed": true
+    },
+    {
+      "name": "Perfil e histórico acessíveis",
+      "passed": true
+    },
+    {
+      "name": "XSS armazenado não executa na área administrativa",
+      "passed": true
+    },
+    {
+      "name": "Administração: cadastrar, editar produto e atualizar status",
+      "passed": true
+    },
+    {
+      "name": "Carrossel: setas, teclado e adição com tamanho",
+      "passed": true
+    },
+    {
+      "name": "Produtos R$ 1/R$ 2 aparecem e teste isolado não cobra frete",
+      "passed": true
+    },
+    {
+      "name": "Capitalização: gêneros legíveis e sigla PIX preservada",
+      "passed": true
+    },
+    {
+      "name": "Estoque administrativo: ajuste por tamanho persiste ao recarregar",
+      "passed": true
+    },
+    {
+      "name": "Promoção e configurações administrativas persistem",
+      "passed": true
+    },
+    {
+      "name": "Entrega administrativa: etapas, problema e linha do tempo do cliente",
+      "passed": true
+    },
+    {
+      "name": "Galeria e prévia do produto funcionam com imagem adicional enviada",
+      "passed": true
+    },
+    {
+      "name": "Desativação exige confirmação e persiste após atualização",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 1440px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 1024px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 768px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 390px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 360px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Responsividade 320px sem rolagem horizontal",
+      "passed": true
+    },
+    {
+      "name": "Menu mobile expande com aria-expanded",
+      "passed": true
+    },
+    {
+      "name": "Sem exceções de JavaScript",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

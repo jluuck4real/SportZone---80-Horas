@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho - SportZone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">SportZone</a>
+
+  <div class="search">
+    <i class="bi bi-search" aria-hidden="true"></i>
+    <input type="search" id="siteSearch" placeholder="Pesquisar" autocomplete="off">
+  </div>
+
+  <nav class="nav">
+    <a class="" href="index.html">Home</a>
+    <a class="" href="produtos.html">Produtos</a>
+    <a class="" href="lancamentos.html">Lançamentos</a>
+    <a class="" href="promocoes.html">Promoções</a>
+    <a class="" href="contato.html">Contate-nos</a>
+  </nav>
+</header>
+
+
+<main class="cart-main">
+  <div class="cart-area"><a class="cart-icon" href="carrinho.html" aria-label="Abrir carrinho"><i class="bi bi-bag"></i></a></div>
+  <h1 class="cart-title">Carrinho:</h1>
+
+  <span id="cartUnitPrice" class="d-none" data-price="999.99"></span>
+
+  <section class="cart-card">
+    <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/113984NXA1.jpg" alt="Nike Sabrina 3 What The? — carrinho"></div>
+    <div class="cart-info">
+      <h2>Nike Sabrina 3 What The?</h2>
+      <p>Basquete<br>Tamanho: 42</p>
+      <h3><span id="cartLineTotal">R$999,99</span> <span class="discount">5% off</span></h3>
+    </div>
+    <div class="qty">
+      <p>Quantidade:</p>
+      <div class="d-inline-flex align-items-center border rounded overflow-hidden bg-white">
+        <button type="button" class="btn btn-light border-0 rounded-0 px-3" id="cartQtyMinus" aria-label="Diminuir"><i class="bi bi-dash-lg"></i></button>
+        <input type="number" id="cartQty" value="1" min="1" class="border-0 text-center" style="width:52px;">
+        <button type="button" class="btn btn-light border-0 rounded-0 px-3" id="cartQtyPlus" aria-label="Aumentar"><i class="bi bi-plus-lg"></i></button>
+      </div>
+    </div>
+    <a class="remove-link d-inline-flex align-items-center gap-1" href="produtos.html"><i class="bi bi-trash"></i> Remover do Carrinho</a>
+  </section>
+
+  <section class="cart-summary">
+    <div>
+      <h3>Resumo:</h3>
+      <p>Valor Total: <strong id="cartSummaryTotal">R$999,99</strong><br>Frete: <strong>A Calcular</strong></p>
+    </div>
+    <div>
+      <label for="cupom"><i class="bi bi-ticket-perforated me-1"></i>Cupom de Desconto:</label>
+      <div class="d-flex gap-2 flex-wrap justify-content-center">
+        <input id="cupom" placeholder="Digite seu cupom:">
+        <button type="button" class="btn btn-dark btn-sm rounded-pill px-3" id="cupomBtn">Aplicar</button>
+      </div>
+      <p id="cupomMsg" class="small text-muted mt-2 mb-0"></p>
+    </div>
+    <div>
+      <label for="cep"><i class="bi bi-truck me-1"></i>Prazo de Entrega:</label>
+      <div class="d-flex gap-2 flex-wrap justify-content-center">
+        <input id="cep" placeholder="00000-000" maxlength="9">
+        <button type="button" class="btn btn-outline-dark btn-sm rounded-pill" id="cepCalcBtn">Calcular</button>
+      </div>
+      <p id="cepResult" class="small mt-1 mb-0"></p>
+    </div>
+  </section>
+
+  <section class="cart-actions">
+    <a class="black-btn gap-2" href="contato.html"><i class="bi bi-credit-card-2-front"></i> Finalizar Pagamento</a><br>
+    <a class="black-btn small gap-2" href="produtos.html"><i class="bi bi-x-lg"></i> Excluir Carrinho</a>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById("cupomBtn");
+  var cupom = document.getElementById("cupom");
+  var msg = document.getElementById("cupomMsg");
+  if(btn && cupom && msg){
+    btn.addEventListener("click", function(){
+      var v = cupom.value.trim().toUpperCase();
+      if(!v){ msg.textContent = "Digite um cupom."; msg.className = "small text-danger mt-2 mb-0"; return; }
+      if(v === "SPORT10"){ msg.textContent = "Cupom aplicado: 10% de desconto (simulação)."; msg.className = "small text-success mt-2 mb-0"; }
+      else { msg.textContent = "Cupom não encontrado."; msg.className = "small text-warning mt-2 mb-0"; }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

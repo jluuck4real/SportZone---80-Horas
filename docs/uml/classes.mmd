@@ -1,0 +1,132 @@
+classDiagram
+direction LR
+class ApiController {
+ +handle(path, method) never
+ -admin(path, method, data) never
+}
+class Security {
+ +start() void
+ +csrf() void
+ +user() array
+ +admin() array
+}
+class Database {
+ -PDO pdo
+ +connection() PDO
+ +transaction(callback) mixed
+ +lock(table) string
+}
+class Repository {
+ <<abstract>>
+ #PDO db
+ +query(sql, params) PDOStatement
+ +insert(table, data) int
+}
+class Usuario {
+ -array data
+ +verify(password) bool
+ +publicData() array
+}
+class Produto {
+ -array data
+ +price() int
+ +available(quantity) bool
+ +sizes() array
+}
+class Pedido {
+ +TRANSITIONS array
+ +canTransition(from, to) bool
+}
+class UsuarioRepository {
+ +byEmail(email) array
+ +create(name,email,password,role) int
+ +update(id,name,email) void
+ +addresses(user) array
+}
+class ProdutoRepository {
+ +find(id,lock) array
+ +catalog(filters,admin) array
+ +save(data,id) int
+ +deactivate(id) void
+}
+class CarrinhoRepository {
+ +current() int
+ +rows(cart) array
+ +set(cart,product,size,quantity,add) void
+ +merge(user) void
+}
+class PedidoRepository {
+ +list(user,status) array
+ +find(id,user) array
+}
+class UsuarioService {
+ +register(data) array
+ +login(data) array
+}
+class CarrinhoService {
+ +summary(coupon,cep,strict) array
+}
+class FreteService {
+ +cep(value) string
+ +quote(cep,net) array
+}
+class PedidoService {
+ +checkout(user,data) int
+ +transition(id,actor,target,admin) void
+}
+class ProdutoService {
+ +save(data) int
+ +upload(file) string
+}
+Repository <|-- UsuarioRepository
+Repository <|-- ProdutoRepository
+Repository <|-- CarrinhoRepository
+Repository <|-- PedidoRepository
+Repository <|-- UsuarioService
+Repository <|-- CarrinhoService
+Repository <|-- PedidoService
+Repository <|-- ApiController
+Repository --> Database
+ApiController --> Security
+ApiController --> UsuarioService
+ApiController --> CarrinhoService
+ApiController --> PedidoService
+ApiController --> ProdutoService
+UsuarioService --> Usuario
+UsuarioService --> UsuarioRepository
+UsuarioService --> CarrinhoRepository
+CarrinhoService --> CarrinhoRepository
+CarrinhoService --> FreteService
+CarrinhoRepository --> Produto
+CarrinhoRepository --> ProdutoRepository
+PedidoService --> Pedido
+PedidoService --> CarrinhoService
+PedidoService --> ProdutoRepository
+ProdutoService --> ProdutoRepository
+class StockService {
+ +variants(product,all) array
+ +synchronize(product,variants,actor) void
+ +change(product,variant,delta,type,actor,order,note) void
+ +adjust(data,actor) void
+ +refreshTotal(product) void
+}
+class StockRepository {
+ +page(filters) array
+ +movements(filters) array
+}
+class DashboardRepository {
+ +summary() array
+}
+class SettingsRepository {
+ +get() array
+ +save(data) void
+}
+Repository <|-- StockService
+Repository <|-- StockRepository
+Repository <|-- DashboardRepository
+Repository <|-- SettingsRepository
+ProdutoService --> StockService
+PedidoService --> StockService
+ApiController --> StockRepository
+ApiController --> DashboardRepository
+ApiController --> SettingsRepository

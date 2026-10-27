@@ -1,0 +1,28 @@
+flowchart TD
+ A([Início]) --> B[Consultar catálogo e produto]
+ B --> C[Selecionar tamanho e quantidade]
+ C --> D{Disponível no servidor?}
+ D -- Não --> C
+ D -- Sim --> E[Persistir carrinho]
+ E --> F{Cliente autenticado?}
+ F -- Não --> G[Cadastrar ou entrar e mesclar carrinho]
+ G --> F
+ F -- Sim --> H[Informar endereço de entrega]
+ H --> I[Calcular cupom e frete acadêmico]
+ I --> J[Revisar itens e total]
+ J --> K[Escolher PIX, cartão ou boleto simulado]
+ K --> L[Confirmar compra de teste]
+ L --> M[Iniciar transação e bloquear produtos]
+ M --> N{Revalidação e gravação OK?}
+ N -- Não --> O[Rollback e mensagem de erro]
+ O --> J
+ N -- Sim --> P[Gravar pedido, itens e pagamento pendente]
+ P --> Q[Baixar estoque por tamanho, registrar movimento e limpar carrinho]
+ Q --> R[Commit]
+ R --> S[Exibir confirmação aguardando pagamento]
+ S --> T{Ação posterior}
+ T -- Simular aprovação --> U[Registrar aprovado_teste e evento]
+ T -- Cancelar enquanto pendente --> V[Cancelar e devolver estoque em transação]
+ U --> W[Admin processa, envia e entrega]
+ V --> Z([Fim])
+ W --> Z

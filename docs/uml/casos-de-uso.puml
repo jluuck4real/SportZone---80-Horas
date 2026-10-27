@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+actor Visitante
+actor Cliente
+actor Administrador
+Cliente --|> Visitante
+Administrador --|> Cliente
+rectangle SportZone {
+ usecase "Consultar catálogo / buscar / filtrar" as Catalogo
+ usecase "Consultar produto" as Produto
+ usecase "Cadastrar conta" as Cadastro
+ usecase "Entrar / sair" as Login
+ usecase "Gerenciar carrinho" as Carrinho
+ usecase "Calcular cupom e frete simulado" as Frete
+ usecase "Registrar contato" as Contato
+ usecase "Atualizar perfil e endereços" as Perfil
+ usecase "Finalizar pedido acadêmico" as Checkout
+ usecase "Revalidar preços e estoque" as Validar
+ usecase "Consultar próprios pedidos" as Historico
+ usecase "Simular aprovação de pagamento" as Aprovar
+ usecase "Cancelar pedido pendente" as Cancelar
+ usecase "Consultar dashboard" as Dashboard
+ usecase "CRUD produtos / estoque / imagens" as Crud
+ usecase "Gerenciar categorias" as Categorias
+ usecase "Gerenciar status dos pedidos" as Status
+ usecase "Consultar mensagens" as Mensagens
+}
+Visitante --> Catalogo
+Visitante --> Produto
+Visitante --> Cadastro
+Visitante --> Login
+Visitante --> Carrinho
+Visitante --> Contato
+Carrinho .> Frete : <<include>>
+Cliente --> Perfil
+Cliente --> Checkout
+Checkout .> Validar : <<include>>
+Checkout .> Frete : <<include>>
+Cliente --> Historico
+Cliente --> Aprovar
+Cliente --> Cancelar
+Administrador --> Dashboard
+Administrador --> Crud
+Administrador --> Categorias
+Administrador --> Status
+Administrador --> Mensagens
+note bottom of Aprovar
+ Ação explícita; nenhuma cobrança real.
+end note
+@enduml

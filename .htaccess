@@ -1,0 +1,14 @@
+Options -Indexes
+RewriteEngine On
+# Configure this project as a VirtualHost document root (not a subfolder).
+RewriteRule ^api/ index.php [L,QSA]
+RewriteRule ^admin\.html$ index.php [L,QSA]
+RewriteRule ^$ index.html [L]
+RewriteRule ^(?:index|produtos|produto|lancamentos|promocoes|carrinho|contato|login|cadastro|perfil|checkout|pedidos|pedido|admin)\.html$ - [L]
+RewriteRule ^(?:style\.css|site\.js|storefront\.js|payments\.js|admin\.js|orders\.js|product\.js|assets/images/[a-z0-9-]+\.svg|assets/uploads/[a-f0-9]{32}\.(?:jpg|png|webp))$ - [L]
+RewriteRule ^ - [F]
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
+</IfModule>

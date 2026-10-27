@@ -1,0 +1,204 @@
+{
+  "at": "2026-10-27T02:20:27.873Z",
+  "database": "SQLite explicitamente isolado; SQL Server não executado",
+  "results": [
+    {
+      "name": "Sessão e CSRF: mutação sem token bloqueada",
+      "passed": true,
+      "ms": 16
+    },
+    {
+      "name": "Cadastro válido e rejeição de confirmação incorreta",
+      "passed": true,
+      "ms": 98
+    },
+    {
+      "name": "Cadastro duplicado não cria segundo usuário",
+      "passed": true,
+      "ms": 12
+    },
+    {
+      "name": "Login com senha incorreta",
+      "passed": true,
+      "ms": 87
+    },
+    {
+      "name": "Login correto regenera sessão e preserva carrinho anônimo",
+      "passed": true,
+      "ms": 174
+    },
+    {
+      "name": "Busca e filtros reais, ordenação e resultado vazio",
+      "passed": true,
+      "ms": 35
+    },
+    {
+      "name": "Detalhe identifica produto por ID",
+      "passed": true,
+      "ms": 13
+    },
+    {
+      "name": "Injeção SQL na busca e ID não altera dados",
+      "passed": true,
+      "ms": 23
+    },
+    {
+      "name": "Autorização administrativa no servidor",
+      "passed": true,
+      "ms": 45
+    },
+    {
+      "name": "Carrinho aceita vários itens e ignora preços do navegador",
+      "passed": true,
+      "ms": 30
+    },
+    {
+      "name": "Alterar quantidade e impedir zero, negativo e acima do estoque",
+      "passed": true,
+      "ms": 69
+    },
+    {
+      "name": "Remover item e atualizar subtotal",
+      "passed": true,
+      "ms": 49
+    },
+    {
+      "name": "Cupom inválido e cálculo de desconto/frete no servidor",
+      "passed": true,
+      "ms": 30
+    },
+    {
+      "name": "CEP inválido rejeitado e regras regionais de frete",
+      "passed": true,
+      "ms": 53
+    },
+    {
+      "name": "Atualizar perfil e cadastrar endereço",
+      "passed": true,
+      "ms": 59
+    },
+    {
+      "name": "Checkout rejeita total adulterado sem reduzir estoque",
+      "passed": true,
+      "ms": 44
+    },
+    {
+      "name": "Checkout grava pedido, itens, pagamento pendente e reduz estoque",
+      "passed": true,
+      "ms": 87
+    },
+    {
+      "name": "Checkout idempotente não duplica pedido ou estoque",
+      "passed": true,
+      "ms": 21
+    },
+    {
+      "name": "Histórico restringe pedido e endereço ao proprietário",
+      "passed": true,
+      "ms": 231
+    },
+    {
+      "name": "Aprovação simulada apenas por ação explícita e transições válidas",
+      "passed": true,
+      "ms": 67
+    },
+    {
+      "name": "Login administrativo, cadastro e edição de produto",
+      "passed": true,
+      "ms": 248
+    },
+    {
+      "name": "CRUD de categoria",
+      "passed": true,
+      "ms": 164
+    },
+    {
+      "name": "Gestão de status e cancelamento devolve estoque uma única vez",
+      "passed": true,
+      "ms": 136
+    },
+    {
+      "name": "Contato gravado e conteúdo potencial XSS tratado como dados",
+      "passed": true,
+      "ms": 87
+    },
+    {
+      "name": "Dashboard e filtros administrativos",
+      "passed": true,
+      "ms": 27
+    },
+    {
+      "name": "Arquivos privados, ZIP, configuração e SQL não expostos",
+      "passed": true,
+      "ms": 20
+    },
+    {
+      "name": "Logout encerra acesso e login recupera carrinho salvo",
+      "passed": true,
+      "ms": 293
+    },
+    {
+      "name": "Hash seguro no banco (verificação por CLI)",
+      "passed": true,
+      "ms": 212
+    },
+    {
+      "name": "Regras de frete: faixas e gratuidade após desconto",
+      "passed": true,
+      "ms": 289
+    },
+    {
+      "name": "Cupom expirado é rejeitado",
+      "passed": true,
+      "ms": 492
+    },
+    {
+      "name": "Estoque individual por tamanho impede excedente sem bloquear outros tamanhos",
+      "passed": true,
+      "ms": 750
+    },
+    {
+      "name": "Falha durante gravação do pagamento faz rollback de pedido e estoque",
+      "passed": true,
+      "ms": 845
+    },
+    {
+      "name": "Cartão e boleto simulados criam pedidos pendentes sem dados sensíveis",
+      "passed": true,
+      "ms": 277
+    },
+    {
+      "name": "Concorrência lógica: estoque alterado após carrinho bloqueia checkout",
+      "passed": true,
+      "ms": 446
+    },
+    {
+      "name": "Upload: extensão/MIME inválidos bloqueados no servidor",
+      "passed": true,
+      "ms": 32
+    },
+    {
+      "name": "Upload PNG válido e associação ao produto",
+      "passed": true,
+      "ms": 26
+    },
+    {
+      "name": "Cliente não pode promover o próprio perfil pelo cadastro",
+      "passed": true,
+      "ms": 263
+    },
+    {
+      "name": "Login bloqueia após cinco falhas por IP/e-mail",
+      "passed": true,
+      "ms": 462
+    },
+    {
+      "name": "Produtos de teste: preços reais no banco, sem frete e sem ativação externa",
+      "passed": true,
+      "ms": 72
+    }
+  ],
+  "serverErrors": [
+    "[Mon Oct 26 23:20:25 2026] [SportZone database] 23000"
+  ]
+}

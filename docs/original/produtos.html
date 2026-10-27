@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - SportZone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">SportZone</a>
+
+  <div class="search">
+    <i class="bi bi-search" aria-hidden="true"></i>
+    <input type="search" id="siteSearch" placeholder="Pesquisar produtos" autocomplete="off">
+  </div>
+
+  <nav class="nav">
+    <a class="" href="index.html">Home</a>
+    <a class="active" href="produtos.html">Produtos</a>
+    <a class="" href="lancamentos.html">Lançamentos</a>
+    <a class="" href="promocoes.html">Promoções</a>
+    <a class="" href="contato.html">Contate-nos</a>
+  </nav>
+</header>
+
+
+<main class="products-page">
+  <div class="cart-area"><a class="cart-icon" href="carrinho.html" aria-label="Abrir carrinho"><i class="bi bi-bag"></i></a></div>
+  <section class="products-layout">
+    
+    <aside class="sidebar">
+      <h1>Produtos:</h1>
+      <div class="accordion accordion-flush filter-accordion" id="shopFilters">
+        <div class="accordion-item border border-dark-subtle">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#filtroGenero" aria-expanded="false">Gênero</button>
+          </h2>
+          <div id="filtroGenero" class="accordion-collapse collapse">
+            <div class="accordion-body py-2">
+              <label><input type="checkbox" name="gender" value="masculino"> Masculino</label>
+              <label><input type="checkbox" name="gender" value="feminino"> Feminino</label>
+              <label><input type="checkbox" name="gender" value="unissex"> Unissex</label>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border border-dark-subtle border-top-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#filtroTamanho">Tamanho</button>
+          </h2>
+          <div id="filtroTamanho" class="accordion-collapse collapse">
+            <div class="accordion-body py-2">
+              <p class="small text-muted mb-0">Em breve: filtro por tamanho (P, M, G, GG).</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border border-dark-subtle border-top-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button py-2" type="button" data-bs-toggle="collapse" data-bs-target="#filtroEsporte" aria-expanded="true">Esportes</button>
+          </h2>
+          <div id="filtroEsporte" class="accordion-collapse collapse show">
+            <div class="accordion-body py-2">
+              <label><input type="checkbox" name="sport" value="basquete"> Basquete</label>
+              <label><input type="checkbox" name="sport" value="futebol"> Futebol</label>
+              <label><input type="checkbox" name="sport" value="volei"> Vôlei</label>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border border-dark-subtle border-top-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#filtroMarca">Marca</button>
+          </h2>
+          <div id="filtroMarca" class="accordion-collapse collapse">
+            <div class="accordion-body py-2">
+              <label><input type="checkbox" name="brand" value="nike"> Nike</label>
+              <label><input type="checkbox" name="brand" value="adidas"> Adidas</label>
+              <label><input type="checkbox" name="brand" value="jordan"> Jordan</label>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border border-dark-subtle border-top-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#filtroOfertas">Ofertas</button>
+          </h2>
+          <div id="filtroOfertas" class="accordion-collapse collapse">
+            <div class="accordion-body py-2">
+              <p class="small text-muted mb-0">Em breve: filtro por % de desconto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <div class="grid-3" id="productGrid">
+      
+    <article class="product-card" data-name="Jersey Atlanta Hawks" data-category="basquete" data-gender="masculino" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/023163P1A3.jpg" alt="Jersey Atlanta Hawks"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$339,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Camiseta Dallas Mavericks" data-category="basquete" data-gender="masculino" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/768x768/02326617A2.jpg" alt="Camiseta Dallas Mavericks"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$290,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="LeBron XXXIII" data-category="basquete" data-gender="unissex" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/105762IFA14.jpg" alt="LeBron XXXIII"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$1559,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="LeBron Witness IX" data-category="basquete" data-gender="masculino" data-brand="adidas">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/060779IHA5.jpg" alt="LeBron Witness IX"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$999,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Camiseta New York Knicks" data-category="basquete" data-gender="masculino" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/768x768/02377516A1.jpg" alt="Camiseta New York Knicks"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$290,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Jersey Phoenix Suns" data-category="basquete" data-gender="masculino" data-brand="jordan">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/768x768/080383IDA2.jpg" alt="Jersey Phoenix Suns"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$339,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Camiseta Seleção Uruguaia" data-category="futebol" data-gender="masculino" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/09867515A4.jpg" alt="Camiseta Seleção Uruguaia"></div>
+        <div class="category">Futebol</div>
+        <div class="price">R$255,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Camiseta Seleção Brasileira" data-category="futebol" data-gender="masculino" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/09780200A7.jpg" alt="Camiseta Seleção Brasileira"></div>
+        <div class="category">Futebol</div>
+        <div class="price">R$419,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+    
+    <article class="product-card" data-name="Nike Air Zoom G.T Academy 2" data-category="basquete" data-gender="unissex" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/09565151A2.jpg" alt="Nike Air Zoom G.T Academy 2"></div>
+        <div class="category">Basquete</div>
+        <div class="price">R$899,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+
+    <article class="product-card" data-name="Camisa Brasil Vôlei CBV" data-category="volei" data-gender="unissex" data-brand="nike">
+      <a href="produto.html">
+        <div class="img-slot"><img src="https://imgnike-a.akamaihd.net/360x360/102894IDA7.jpg" alt="Camisa Brasil Vôlei CBV"></div>
+        <div class="category">Vôlei</div>
+        <div class="price">R$329,99 <span class="discount">5% off</span></div>
+      </a>
+    </article>
+
+    <p id="filterEmpty" class="d-none">Nenhum produto encontrado com os filtros atuais.</p>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="site.js"></script>
+
+</body>
+</html>

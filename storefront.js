@@ -1,0 +1,40 @@
+/* Carrosséis nativos: scroll, toque e teclado; sem biblioteca adicional. */
+'use strict';
+window.SportZoneStorefront=function({api,esc,money,badge,toast}){
+ let products=new Map();
+ const cents=v=>Math.round(Number(v)*100);
+ function card(p){products.set(String(p.id),p);const off=p.sale_price?Math.round((1-Number(p.sale_price)/Number(p.price))*100):0;
+  return `<article class="product-card" data-name="${esc(p.name)}" data-category="${esc(p.category_slug)}"><a href="produto.html?id=${p.id}" class="product-visual"><div class="img-slot">${p.is_test==1?'<span class="product-tag tag-test">Teste de pagamento</span>':off?`<span class="product-tag tag-offer">−${off}%</span>`:p.is_new==1?'<span class="product-tag">Lançamento</span>':''}<img src="${esc(p.image)}" alt="${esc(p.name)} · imagem representativa" loading="lazy" width="544" height="480"><span class="card-explore">Conheça o produto <i aria-hidden="true" class="bi bi-arrow-up-right"></i></span></div><div class="category">${esc(p.brand)} <span aria-hidden="true">/</span> ${esc(p.category)}</div><h3 class="product-name">${esc(p.name)}</h3></a><div class="card-price-row"><div class="price">${money(cents(p.sale_price??p.price))}${off?`<s>${money(cents(p.price))}</s>`:''}</div><span class="stock-dot ${p.stock>0?'':'sold-out'}">${p.stock>0?'Em estoque':'Esgotado'}</span></div><p class="card-note">${p.is_test==1?'Sem entrega física · ambiente identificado no checkout':p.stock>0?'Seu próximo desafio começa aqui.':'Em breve, novas oportunidades.'}</p><div class="card-actions"><a class="card-view" href="produto.html?id=${p.id}">Ver produto <i aria-hidden="true" class="bi bi-arrow-up-right"></i></a><button class="card-add" type="button" data-quick-add="${p.id}" aria-label="Adicionar ${esc(p.name)} ao carrinho" ${p.stock>0?'':'disabled'}><i aria-hidden="true" class="bi bi-bag-plus"></i><span>Adicionar</span></button></div></article>`;
+ }
+ function carousel(id,heading,kicker,items,href,label='Ver todos'){
+  if(!items.length)return '';
+  return `<section class="home-section product-carousel" role="region" aria-roledescription="carrossel" aria-label="${esc(heading)}"><div class="section-heading"><div><span class="eyebrow">${esc(kicker)}</span><h2>${esc(heading)}</h2></div><div class="carousel-heading-actions">${href?`<a class="collection-link" href="${esc(href)}">${esc(label)} <i aria-hidden="true" class="bi bi-arrow-up-right"></i></a>`:''}<div class="carousel-buttons"><button class="icon-button" data-carousel="${id}" data-direction="-1" aria-label="Produtos anteriores em ${esc(heading)}" aria-controls="${id}"><i aria-hidden="true" class="bi bi-arrow-left"></i></button><button class="icon-button" data-carousel="${id}" data-direction="1" aria-label="Próximos produtos em ${esc(heading)}" aria-controls="${id}"><i aria-hidden="true" class="bi bi-arrow-right"></i></button></div></div></div><div class="carousel-track other-row" id="${id}" tabindex="0" aria-label="Produtos de ${esc(heading)}. Use as setas do teclado ou deslize.">${items.map(card).join('')}</div><div class="carousel-bottom"><span data-carousel-state="${id}" aria-live="polite"></span><span>Arraste para explorar <i aria-hidden="true" class="bi bi-arrow-left-right"></i></span></div></section>`;
+ }
+ function initialize(){
+  document.querySelectorAll('.carousel-track').forEach(track=>{
+   if(track.dataset.initialized)return;track.dataset.initialized='1';
+   const update=()=>{const cards=[...track.querySelectorAll('.product-card')],bounds=track.getBoundingClientRect();const visible=cards.map((el,i)=>({el,i})).filter(({el})=>{const b=el.getBoundingClientRect();return b.left<bounds.right-10&&b.right>bounds.left+10;});const state=document.querySelector(`[data-carousel-state="${track.id}"]`);if(state&&visible.length)state.textContent=`${visible[0].i+1}–${visible.at(-1).i+1} de ${cards.length}`;document.querySelectorAll(`[data-carousel="${track.id}"]`).forEach(b=>b.disabled=b.dataset.direction==='-1'?track.scrollLeft<3:track.scrollLeft>=track.scrollWidth-track.clientWidth-3);};
+   track.addEventListener('scroll',update,{passive:true});new ResizeObserver(update).observe(track);update();
+   track.addEventListener('keydown',e=>{if(e.target!==track||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();move(track,e.key==='ArrowRight'?1:-1);});
+   let start=null,origin=0,dragged=false;
+   track.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('button'))return;start=e.clientX;origin=track.scrollLeft;dragged=false;});
+   track.addEventListener('pointermove',e=>{if(start===null)return;const dx=e.clientX-start;if(Math.abs(dx)>8){dragged=true;track.classList.add('dragging');track.scrollLeft=origin-dx;}});
+   const stop=()=>{start=null;track.classList.remove('dragging');};track.addEventListener('pointerup',stop);track.addEventListener('pointerleave',stop);track.addEventListener('pointercancel',stop);
+   track.addEventListener('dragstart',e=>e.preventDefault());track.addEventListener('click',e=>{if(dragged){e.preventDefault();e.stopPropagation();dragged=false;}},true);
+  });
+ }
+ function move(track,direction){const first=track.querySelector('.product-card'),step=(first?.getBoundingClientRect().width||280)+22;track.scrollBy({left:direction*step*Math.max(1,Math.floor(track.clientWidth/step)),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});}
+ document.addEventListener('click',async e=>{
+  const arrow=e.target.closest('[data-carousel]');if(arrow){move(document.getElementById(arrow.dataset.carousel),Number(arrow.dataset.direction));return;}
+  const button=e.target.closest('[data-quick-add]');if(!button||button.disabled)return;
+  let p=products.get(button.dataset.quickAdd);if(!p)return;button.disabled=true;
+  try{p=await api('/product?id='+encodeURIComponent(p.id));}catch(err){toast(err.message);button.disabled=false;return;}button.disabled=false;
+  const variants=p.variants.filter(v=>v.active==1),sizes=variants.map(v=>v.size);
+  if(p.stock<1){toast('Este produto está esgotado.');return;}
+  if(sizes.length===1){button.disabled=true;try{const c=await api('/cart/item',{product_id:Number(p.id),size:sizes[0],quantity:1,mode:'add'});badge(c);toast('Produto adicionado ao carrinho.');}catch(err){toast(err.message);}finally{button.disabled=false;}return;}
+  document.querySelector('#quickAddDialog')?.remove();const dialog=document.createElement('dialog');dialog.id='quickAddDialog';dialog.className='quick-add-dialog';dialog.setAttribute('aria-labelledby','quickAddTitle');
+  dialog.innerHTML=`<button class="dialog-close" type="button" aria-label="Fechar seleção de tamanho">×</button><span class="eyebrow">Sua próxima escolha</span><h2 id="quickAddTitle">${esc(p.name)}</h2><p class="quick-price">${money(cents(p.sale_price??p.price))}</p><form data-storefront-form><fieldset><legend>Escolha o tamanho</legend><div class="sizes">${variants.map(v=>`<label class="${v.stock>0?'':'size-out'}" title="${v.stock} unidade(s)"><input type="radio" name="size" value="${esc(v.size)}" required ${v.stock<1?'disabled':''}><span>${esc(v.size)}</span></label>`).join('')}</div></fieldset><button class="button full">Adicionar ao carrinho <i aria-hidden="true" class="bi bi-bag-plus"></i></button><p class="form-error" role="alert"></p></form><a class="text-link" href="produto.html?id=${p.id}">Ver todos os detalhes</a>`;
+  document.body.append(dialog);dialog.showModal();dialog.querySelector('.dialog-close').onclick=()=>dialog.close();dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});dialog.querySelector('form').addEventListener('submit',async event=>{event.preventDefault();const b=dialog.querySelector('form button');b.disabled=true;try{const c=await api('/cart/item',{product_id:Number(p.id),size:new FormData(event.target).get('size'),quantity:1,mode:'add'});badge(c);dialog.close();toast('Produto adicionado ao carrinho.');}catch(err){dialog.querySelector('.form-error').textContent=err.message;b.disabled=false;}});
+ });
+ return {card,carousel,initialize};
+};

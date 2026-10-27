@@ -1,0 +1,329 @@
+{
+  "at": "2026-10-27T02:42:25.947Z",
+  "results": [
+    {
+      "file": "index.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in index.php"
+    },
+    {
+      "file": "router.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in router.php"
+    },
+    {
+      "file": "app\\Controllers\\ApiController.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Controllers\\ApiController.php"
+    },
+    {
+      "file": "app\\Core\\AdminUpgrade.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\AdminUpgrade.php"
+    },
+    {
+      "file": "app\\Core\\Database.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\Database.php"
+    },
+    {
+      "file": "app\\Core\\Http.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\Http.php"
+    },
+    {
+      "file": "app\\Core\\SchemaUpgrade.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\SchemaUpgrade.php"
+    },
+    {
+      "file": "app\\Core\\Security.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\Security.php"
+    },
+    {
+      "file": "app\\Core\\Validation.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Core\\Validation.php"
+    },
+    {
+      "file": "app\\Models\\Pedido.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Models\\Pedido.php"
+    },
+    {
+      "file": "app\\Models\\Produto.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Models\\Produto.php"
+    },
+    {
+      "file": "app\\Models\\Usuario.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Models\\Usuario.php"
+    },
+    {
+      "file": "app\\Payments\\PaymentConfig.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Payments\\PaymentConfig.php"
+    },
+    {
+      "file": "app\\Repositories\\CarrinhoRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\CarrinhoRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\DashboardRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\DashboardRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\PedidoRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\PedidoRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\ProdutoRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\ProdutoRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\Repository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\Repository.php"
+    },
+    {
+      "file": "app\\Repositories\\SettingsRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\SettingsRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\StockRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\StockRepository.php"
+    },
+    {
+      "file": "app\\Repositories\\UsuarioRepository.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Repositories\\UsuarioRepository.php"
+    },
+    {
+      "file": "app\\Services\\CarrinhoService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\CarrinhoService.php"
+    },
+    {
+      "file": "app\\Services\\FreteService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\FreteService.php"
+    },
+    {
+      "file": "app\\Services\\PaymentService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\PaymentService.php"
+    },
+    {
+      "file": "app\\Services\\PedidoService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\PedidoService.php"
+    },
+    {
+      "file": "app\\Services\\ProdutoService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\ProdutoService.php"
+    },
+    {
+      "file": "app\\Services\\StockService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\StockService.php"
+    },
+    {
+      "file": "app\\Services\\UsuarioService.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\app\\Services\\UsuarioService.php"
+    },
+    {
+      "file": "config\\bootstrap.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\config\\bootstrap.php"
+    },
+    {
+      "file": "scripts\\create-admin.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\scripts\\create-admin.php"
+    },
+    {
+      "file": "scripts\\doctor.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\scripts\\doctor.php"
+    },
+    {
+      "file": "scripts\\install.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\scripts\\install.php"
+    },
+    {
+      "file": "scripts\\migrate.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\scripts\\migrate.php"
+    },
+    {
+      "file": "tests\\concurrent-checkout.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\concurrent-checkout.php"
+    },
+    {
+      "file": "tests\\db-action.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\db-action.php"
+    },
+    {
+      "file": "tests\\fixture.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\fixture.php"
+    },
+    {
+      "file": "tests\\legacy-fixture.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\legacy-fixture.php"
+    },
+    {
+      "file": "tests\\v3-check.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\v3-check.php"
+    },
+    {
+      "file": "tests\\verify-database.php",
+      "check": "php -l",
+      "passed": true,
+      "output": "No syntax errors detected in C:\\Users\\pepic\\OneDrive\\Área de Trabalho\\SportZone\\tests\\verify-database.php"
+    },
+    {
+      "file": "site.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "storefront.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "payments.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "admin.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "orders.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "product.js",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\build-pages.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\check.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\document-schema.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\generate-admin-sql.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\import-original.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "scripts\\report-tests.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "tests\\browser.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "tests\\integration.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "file": "tests\\v3.mjs",
+      "check": "node --check",
+      "passed": true,
+      "output": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);
+namespace SportZone\Repositories;
+use SportZone\Payments\PaymentConfig;
+final class DashboardRepository extends Repository {
+    public function summary(): array {
+        $count=fn($sql,$params=[])=>(int)$this->query($sql,$params)->fetchColumn();$threshold=(int)(new SettingsRepository())->get()['low_stock_threshold'];
+        $orders=$this->query('SELECT status,delivery_status,COUNT(*) AS quantity,COALESCE(SUM(total),0) AS total FROM orders GROUP BY status,delivery_status')->fetchAll();
+        $real=$this->query("SELECT COUNT(*) AS quantity,COALESCE(SUM(o.total),0) AS total FROM orders o JOIN payments p ON p.order_id=o.id WHERE p.provider='mercadopago' AND p.environment='production' AND p.status='approved' AND p.verified_at IS NOT NULL AND p.needs_review=0 AND o.status NOT IN ('cancelado','reembolsado')")->fetch();
+        $demo=$this->query("SELECT COUNT(*) AS quantity,COALESCE(SUM(o.total),0) AS total FROM orders o JOIN payments p ON p.order_id=o.id WHERE p.simulated=1 AND p.status='aprovado_teste' AND o.status NOT IN ('cancelado','reembolsado')")->fetch();
+        return ['products'=>$count('SELECT COUNT(*) FROM products'),'available'=>$count('SELECT COUNT(*) FROM products p JOIN categories c ON c.id=p.category_id WHERE p.active=1 AND c.active=1 AND p.stock>0'),'out_of_stock'=>$count('SELECT COUNT(*) FROM products p JOIN categories c ON c.id=p.category_id WHERE p.active=1 AND c.active=1 AND p.stock=0'),'low_stock'=>$count('SELECT COUNT(*) FROM products p JOIN categories c ON c.id=p.category_id WHERE p.active=1 AND c.active=1 AND p.stock BETWEEN 1 AND ?',[$threshold]),'low_variants'=>$count('SELECT COUNT(*) FROM product_variants v JOIN products p ON p.id=v.product_id JOIN categories c ON c.id=p.category_id WHERE v.active=1 AND p.active=1 AND c.active=1 AND v.stock BETWEEN 1 AND ?',[$threshold]),'orders'=>$count('SELECT COUNT(*) FROM orders'),'pending'=>$count("SELECT COUNT(*) FROM orders WHERE status='aguardando_pagamento'"),'separating'=>$count("SELECT COUNT(*) FROM orders WHERE delivery_status='em_separacao'"),'sent'=>$count("SELECT COUNT(*) FROM orders WHERE delivery_status IN ('enviado','saiu_para_entrega','problema_entrega')"),'delivered'=>$count("SELECT COUNT(*) FROM orders WHERE delivery_status='entregue'"),'promotions'=>$count('SELECT COUNT(*) FROM products p JOIN categories c ON c.id=p.category_id WHERE p.active=1 AND c.active=1 AND p.sale_price IS NOT NULL'),'summary'=>$orders,'real_sales'=>$real,'demo_sales'=>$demo,'payments'=>PaymentConfig::publicData(),'recent_orders'=>array_slice((new PedidoRepository())->list(),0,6),'threshold'=>$threshold];
+    }
+}

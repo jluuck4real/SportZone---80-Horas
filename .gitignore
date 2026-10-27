@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+/storage/*
+!/storage/.gitkeep
+/node_modules/
+SportZone-entrega.zip
+SportZone-aprimorado.zip
+SportZone-3.zip
+/.vercel/
+/public-vercel/
+/assets/uploads/*
+!/assets/uploads/.gitkeep
+*.log
+
+.vercel
